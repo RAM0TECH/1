@@ -176,6 +176,31 @@ section {
     color: #03101c;
 }
 
+/* Card Button Style for Enquire / Join Workshop */
+.card-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 18px;
+    padding: 9px 18px;
+    border-radius: 6px;
+    background: rgba(0,245,255,.1);
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.card-btn:hover {
+    background: var(--cyan);
+    color: #03101c;
+    box-shadow: 0 0 15px rgba(0,245,255,.4);
+    transform: translateY(-2px);
+}
+
 /* NAVIGATION */
 
 header {
@@ -202,10 +227,10 @@ header {
     text-decoration: none;
 }
 
-/* Logo size bada kiya gaya hai */
+/* Logo size aur bada kiya gaya hai */
 .logo img {
-    width: 95px;
-    height: 75px;
+    width: 110px;
+    height: 85px;
     object-fit: contain;
 }
 
@@ -262,7 +287,6 @@ header {
     background: rgba(0,245,255,.06);
 }
 
-/* Text size choti ki gayi hai aur font style ('Rajdhani') change kiya gaya hai */
 .hero h1 {
     font-family: 'Rajdhani', sans-serif;
     font-size: clamp(32px, 5vw, 54px);
@@ -367,15 +391,6 @@ header {
     color: var(--muted);
 }
 
-.card-link {
-    display: inline-block;
-    margin-top: 18px;
-    color: var(--cyan);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-}
-
 /* ABOUT */
 
 .about-grid {
@@ -385,9 +400,11 @@ header {
     align-items: center;
 }
 
+/* Logo centered in About section visual box as requested */
 .about-visual {
-    min-height: 350px;
+    min-height: 380px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
@@ -395,22 +412,22 @@ header {
     border-radius: 20px;
     background: rgba(0,245,255,.035);
     overflow: hidden;
+    padding: 30px;
+    text-align: center;
 }
 
 .about-logo {
-    width: 80%;
-    max-width: 300px;
-    height: 240px;
+    width: 100%;
+    max-width: 240px;
+    height: auto;
     object-fit: contain;
     filter: drop-shadow(0 0 25px rgba(0,245,255,.3));
+    margin-bottom: 20px;
 }
 
 .about-badge {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    padding: 15px;
+    width: 100%;
+    padding: 12px;
     text-align: center;
     border-radius: 10px;
     background: rgba(5,8,22,.88);
@@ -423,8 +440,8 @@ header {
     display: block;
     color: var(--cyan);
     font-family: 'Orbitron', sans-serif;
-    font-size: 17px;
-    margin-bottom: 5px;
+    font-size: 15px;
+    margin-bottom: 3px;
 }
 
 .about-text h2 {
@@ -687,8 +704,8 @@ footer {
 }
 
 .footer-logo img {
-    width: 75px;
-    height: 55px;
+    width: 85px;
+    height: 65px;
     object-fit: contain;
 }
 
@@ -949,109 +966,100 @@ footer {
 
             <article class="glass-card reveal">
                 <img src="3.jpeg" alt="Junior STEM" class="course-image">
-               
                 <h3>JR. STEM</h3>
                 <p>
                     An exciting introduction to Science, Technology,
                     Engineering and Mathematics through fun activities,
                     experiments and creative challenges.
                 </p>
-                <a href="#contact" class="card-link">Enquire Now →</a>
+                <a href="#contact" class="card-btn">Enquire Now →</a>
             </article>
 
             <article class="glass-card reveal">
                 <img src="12.png" alt="Senior STEM" class="course-image">
-                
                 <h3>SR. STEM</h3>
                 <p>
                     Explore scientific concepts, engineering principles,
                     innovation and practical problem-solving with
                     advanced hands-on activities.
                 </p>
-                <a href="#contact" class="card-link">Enquire Now →</a>
+                <a href="#contact" class="card-btn">Enquire Now →</a>
             </article>
 
             <article class="glass-card reveal">
                 <img src="71.png" alt="Junior Robotics" class="course-image">
-                
                 <h3>JR. ROBOTICS</h3>
                 <p>
                     Build your first robots, understand basic mechanisms
                     and discover how machines can sense, move and interact.
                 </p>
-                <a href="#contact" class="card-link">Enquire Now →</a>
+                <a href="#contact" class="card-btn">Enquire Now →</a>
             </article>
 
             <article class="glass-card reveal">
                 <img src="13.png" alt="Senior Robotics" class="course-image">
-                
                 <h3>SR. ROBOTICS</h3>
                 <p>
                     Learn advanced robotics, sensors, motors,
                     automation and intelligent robotic systems
                     through practical projects.
                 </p>
-                <a href="#contact" class="card-link">Enquire Now →</a>
+                <a href="#contact" class="card-btn">Enquire Now →</a>
             </article>
 
             <article class="glass-card reveal">
                 <img src="9.jpg" alt="Electronics and IoT" class="course-image">
-              
                 <h3>ELECTRONICS & IoT</h3>
                 <p>
                     Understand electronic components, circuits,
                     sensors and the Internet of Things by creating
                     smart connected devices.
                 </p>
-                <a href="#contact" class="card-link">Enquire Now →</a>
+                <a href="#contact" class="card-btn">Enquire Now →</a>
             </article>
 
             <article class="glass-card reveal">
                 <img src="11.jpg" alt="Coding Engineering" class="course-image">
-               
                 <h3>CODING ENGINEERING</h3>
                 <p>
                     Develop logical thinking and programming skills.
                     Learn how to turn ideas into digital solutions
                     using coding and computational thinking.
                 </p>
-                <a href="#contact" class="card-link">Enquire Now →</a>
+                <a href="#contact" class="card-btn">Enquire Now →</a>
             </article>
 
             <article class="glass-card reveal">
                 <img src="31.jpg" alt="3D Printing and AutoCAD" class="course-image">
-               
                 <h3>3D PRINTING & AUTOCAD</h3>
                 <p>
                     Discover 3D designing, digital modelling,
                     CAD fundamentals and the process of turning
                     digital designs into real objects.
                 </p>
-                <a href="#contact" class="card-link">Enquire Now →</a>
+                <a href="#contact" class="card-btn">Enquire Now →</a>
             </article>
 
             <article class="glass-card reveal">
                 <img src="32.png" alt="Drone Technology" class="course-image">
-               
                 <h3>DRONE TECHNOLOGY</h3>
                 <p>
                     Explore drone technology, flight principles,
                     components, controls and applications of
                     unmanned aerial systems.
                 </p>
-                <a href="#contact" class="card-link">Enquire Now →</a>
+                <a href="#contact" class="card-btn">Enquire Now →</a>
             </article>
 
             <article class="glass-card reveal">
                 <img src="33.jpg" alt="Artificial Intelligence and Machine Learning" class="course-image">
-               
                 <h3>AI & MACHINE LEARNING</h3>
                 <p>
                     Discover Artificial Intelligence, machine learning,
                     smart applications and the technology shaping
                     tomorrow's world.
                 </p>
-                <a href="#contact" class="card-link">Enquire Now →</a>
+                <a href="#contact" class="card-btn">Enquire Now →</a>
             </article>
 
         </div>
@@ -1080,7 +1088,7 @@ footer {
                     Explore robot building, motors, sensors
                     and basic automation through hands-on activities.
                 </p>
-                <a href="#contact" class="card-link">Join Workshop →</a>
+                <a href="#contact" class="card-btn">Join Workshop →</a>
             </article>
 
             <article class="glass-card reveal">
@@ -1089,7 +1097,7 @@ footer {
                     Learn about circuits, electronic components
                     and practical applications of electronics.
                 </p>
-                <a href="#contact" class="card-link">Join Workshop →</a>
+                <a href="#contact" class="card-btn">Join Workshop →</a>
             </article>
 
             <article class="glass-card reveal">
@@ -1098,7 +1106,7 @@ footer {
                     Understand drone components, flight basics
                     and real-world applications of drone technology.
                 </p>
-                <a href="#contact" class="card-link">Join Workshop →</a>
+                <a href="#contact" class="card-btn">Join Workshop →</a>
             </article>
 
             <article class="glass-card reveal">
@@ -1107,7 +1115,7 @@ footer {
                     Get introduced to AI concepts and discover
                     how intelligent systems work in everyday life.
                 </p>
-                <a href="#contact" class="card-link">Join Workshop →</a>
+                <a href="#contact" class="card-btn">Join Workshop →</a>
             </article>
 
             <article class="glass-card reveal">
@@ -1116,7 +1124,7 @@ footer {
                     Experience digital design and learn how
                     3D printers transform designs into physical objects.
                 </p>
-                <a href="#contact" class="card-link">Join Workshop →</a>
+                <a href="#contact" class="card-btn">Join Workshop →</a>
             </article>
 
             <article class="glass-card reveal">
@@ -1125,7 +1133,7 @@ footer {
                     Build logical thinking and discover the
                     fundamentals of programming and coding.
                 </p>
-                <a href="#contact" class="card-link">Join Workshop →</a>
+                <a href="#contact" class="card-btn">Join Workshop →</a>
             </article>
 
         </div>
@@ -1146,6 +1154,7 @@ footer {
         <div class="about-grid">
 
             <div class="about-visual reveal">
+                <!-- Logo is centered inside the visual box -->
                 <img src="35.png" alt="RAMOTECH Logo" class="about-logo">
 
                 <div class="about-badge">
@@ -1275,7 +1284,7 @@ footer {
     </div>
 </section>
 
-<!-- FAQ -->
+<!-- FAQ (Expanded to 10 Questions) -->
 <section id="faq">
 
     <div class="container">
@@ -1344,6 +1353,57 @@ footer {
                     Yes. RAMOTECH offers special technology workshops
                     covering different areas of science and technology.
                     Contact us for details.
+                </div>
+            </div>
+
+            <!-- 5 Additional FAQs added -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    What is the minimum age requirement to join?
+                    <span>＋</span>
+                </button>
+                <div class="faq-answer">
+                    Students from age 6 onwards can join our Junior STEM and foundational coding or robotics programs, with advanced courses tailored for older students.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Do students get certificates after course completion?
+                    <span>＋</span>
+                </button>
+                <div class="faq-answer">
+                    Yes, every student receives a verified certification of completion upon successfully finishing their respective technology program or workshop.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Are kits and materials provided during the classes?
+                    <span>＋</span>
+                </button>
+                <div class="faq-answer">
+                    All necessary hardware components, robotic kits, electronic parts, and software access required during the practical sessions are provided.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Can schools partner with RAMOTECH for STEM labs?
+                    <span>＋</span>
+                </button>
+                <div class="faq-answer">
+                    Yes, RAMOTECH collaborates with educational institutions to set up customized STEM and Robotics labs along with expert trainers.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Where is RAMOTECH located?
+                    <span>＋</span>
+                </button>
+                <div class="faq-answer">
+                    RAMOTECH is based in Ahmedabad, Gujarat, providing both offline sessions and guidance for aspiring young innovators.
                 </div>
             </div>
 
@@ -1458,7 +1518,7 @@ footer {
     <div class="container footer-content">
 
         <a href="#home" class="footer-logo">
-            <img src="35.png" alt="RAMOTECH Logo">
+            <img src="20.png" alt="RAMOTECH Logo">
         </a>
 
         <p>© <span id="year"></span> RAMOTECH. All Rights Reserved.</p>
