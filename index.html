@@ -8,7 +8,7 @@
 <meta name="description" content="RAMOTECH - Explore STEM, Robotics, Electronics, IoT, Coding, AI, Drone Technology and 3D Printing.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -202,9 +202,10 @@ header {
     text-decoration: none;
 }
 
+/* Logo size bada kiya gaya hai */
 .logo img {
-    width: 65px;
-    height: 55px;
+    width: 95px;
+    height: 75px;
     object-fit: contain;
 }
 
@@ -261,10 +262,13 @@ header {
     background: rgba(0,245,255,.06);
 }
 
+/* Text size choti ki gayi hai aur font style ('Rajdhani') change kiya gaya hai */
 .hero h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: clamp(42px, 7vw, 78px);
-    line-height: 1.15;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(32px, 5vw, 54px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 1px;
     margin-bottom: 22px;
 }
 
@@ -746,17 +750,17 @@ footer {
     transform: translateY(0);
 }
 
-/* ROBOT */
+/* ROBOT CANVAS */
 
 #robot-canvas {
     position: absolute;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 42%;
-    height: 500px;
+    width: 44%;
+    height: 520px;
     pointer-events: none;
-    opacity: .85;
+    opacity: .95;
     z-index: -1;
 }
 
@@ -821,7 +825,7 @@ footer {
     }
 
     .hero h1 {
-        font-size: 42px;
+        font-size: 36px;
     }
 
     .why-grid,
@@ -1071,7 +1075,6 @@ footer {
         <div class="cards-grid">
 
             <article class="glass-card reveal">
-               
                 <h3>Robotics Workshop</h3>
                 <p>
                     Explore robot building, motors, sensors
@@ -1081,7 +1084,6 @@ footer {
             </article>
 
             <article class="glass-card reveal">
-                
                 <h3>Electronics Workshop</h3>
                 <p>
                     Learn about circuits, electronic components
@@ -1091,7 +1093,6 @@ footer {
             </article>
 
             <article class="glass-card reveal">
-                
                 <h3>Drone Workshop</h3>
                 <p>
                     Understand drone components, flight basics
@@ -1101,7 +1102,6 @@ footer {
             </article>
 
             <article class="glass-card reveal">
-                
                 <h3>Artificial Intelligence Workshop</h3>
                 <p>
                     Get introduced to AI concepts and discover
@@ -1111,7 +1111,6 @@ footer {
             </article>
 
             <article class="glass-card reveal">
-               
                 <h3>3D Printing Workshop</h3>
                 <p>
                     Experience digital design and learn how
@@ -1121,7 +1120,6 @@ footer {
             </article>
 
             <article class="glass-card reveal">
-                
                 <h3>Coding Workshop</h3>
                 <p>
                     Build logical thinking and discover the
@@ -1486,7 +1484,7 @@ footer {
     ☎
 </a>
 
-<!-- THREE.JS ROBOT -->
+<!-- THREE.JS ADVANCED ROBOT -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
@@ -1584,7 +1582,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 document.getElementById('year').textContent = new Date().getFullYear();
 
 
-/* THREE.JS ROBOT */
+/* THREE.JS ADVANCED FUTURISTIC ROBOT */
 
 (function() {
 
@@ -1601,7 +1599,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
         100
     );
 
-    camera.position.z = 6;
+    camera.position.z = 6.5;
 
     const renderer = new THREE.WebGLRenderer({
         canvas: canvas,
@@ -1612,168 +1610,194 @@ document.getElementById('year').textContent = new Date().getFullYear();
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     function resizeRobot() {
-
         const width = canvas.clientWidth;
         const height = canvas.clientHeight;
 
         if (!width || !height) return;
 
         renderer.setSize(width, height, false);
-
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
-
     }
 
     resizeRobot();
-
     window.addEventListener('resize', resizeRobot);
 
-    /* ROBOT MATERIAL */
-
-    const robotMaterial = new THREE.MeshStandardMaterial({
-        color: 0x143b55,
-        metalness: 0.8,
-        roughness: 0.25
-    });
-
-    const cyanMaterial = new THREE.MeshStandardMaterial({
-        color: 0x00f5ff,
-        emissive: 0x00aabb,
-        emissiveIntensity: 1.8,
-        metalness: 0.4,
+    /* MATERIALS */
+    const armorMaterial = new THREE.MeshStandardMaterial({
+        color: 0x0f2942,
+        metalness: 0.85,
         roughness: 0.2
     });
 
-    const darkMaterial = new THREE.MeshStandardMaterial({
-        color: 0x071421,
-        metalness: 0.7,
-        roughness: 0.3
+    const innerMaterial = new THREE.MeshStandardMaterial({
+        color: 0x08111d,
+        metalness: 0.9,
+        roughness: 0.4
+    });
+
+    const cyanGlow = new THREE.MeshStandardMaterial({
+        color: 0x00f5ff,
+        emissive: 0x00f5ff,
+        emissiveIntensity: 2.2,
+        metalness: 0.3,
+        roughness: 0.1
+    });
+
+    const purpleGlow = new THREE.MeshStandardMaterial({
+        color: 0x9b5cff,
+        emissive: 0x9b5cff,
+        emissiveIntensity: 1.8,
+        metalness: 0.3,
+        roughness: 0.1
     });
 
     const robot = new THREE.Group();
 
-    /* HEAD */
-
-    const head = new THREE.Mesh(
-        new THREE.BoxGeometry(1.7, 1.35, 1.15),
-        robotMaterial
+    /* CHEST / TORSO */
+    const torso = new THREE.Mesh(
+        new THREE.BoxGeometry(1.4, 1.5, 0.95),
+        armorMaterial
     );
+    torso.position.y = -0.4;
+    robot.add(torso);
 
-    head.position.y = 1.1;
+    /* CHEST REACTOR (ARC CORE) */
+    const coreRing = new THREE.Mesh(
+        new THREE.TorusGeometry(0.32, 0.05, 16, 32),
+        cyanGlow
+    );
+    coreRing.position.set(0, -0.35, 0.5);
+    robot.add(coreRing);
+
+    const coreCenter = new THREE.Mesh(
+        new THREE.SphereGeometry(0.18, 24, 24),
+        cyanGlow
+    );
+    coreCenter.position.set(0, -0.35, 0.48);
+    robot.add(coreCenter);
+
+    /* NECK */
+    const neck = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.2, 0.25, 0.3, 16),
+        innerMaterial
+    );
+    neck.position.y = 0.45;
+    robot.add(neck);
+
+    /* ADVANCED HEAD */
+    const head = new THREE.Mesh(
+        new THREE.BoxGeometry(1.5, 1.1, 1.2),
+        armorMaterial
+    );
+    head.position.y = 1.15;
     robot.add(head);
 
-    /* FACE PANEL */
-
-    const face = new THREE.Mesh(
-        new THREE.BoxGeometry(1.35, 0.75, 0.08),
-        darkMaterial
+    /* VISOR (CYBERNETIC EYE STRIP) */
+    const visor = new THREE.Mesh(
+        new THREE.BoxGeometry(1.25, 0.22, 0.15),
+        cyanGlow
     );
+    visor.position.set(0, 1.2, 0.58);
+    robot.add(visor);
 
-    face.position.set(0, 1.1, 0.61);
-    robot.add(face);
-
-    /* EYES */
-
-    const eyeGeometry = new THREE.SphereGeometry(0.11, 24, 24);
-
-    const leftEye = new THREE.Mesh(eyeGeometry, cyanMaterial);
-    leftEye.position.set(-0.35, 1.15, 0.68);
-    robot.add(leftEye);
-
-    const rightEye = new THREE.Mesh(eyeGeometry, cyanMaterial);
-    rightEye.position.set(0.35, 1.15, 0.68);
-    robot.add(rightEye);
-
-    /* ANTENNA */
-
-    const antenna = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.035, 0.035, 0.4, 12),
-        cyanMaterial
+    /* HEAD ACCENTS / EARS */
+    const leftEar = new THREE.Mesh(
+        new THREE.BoxGeometry(0.15, 0.5, 0.4),
+        purpleGlow
     );
+    leftEar.position.set(-0.8, 1.15, 0);
+    robot.add(leftEar);
 
-    antenna.position.set(0, 1.98, 0);
-    robot.add(antenna);
-
-    const antennaBall = new THREE.Mesh(
-        new THREE.SphereGeometry(0.1, 20, 20),
-        cyanMaterial
+    const rightEar = new THREE.Mesh(
+        new THREE.BoxGeometry(0.15, 0.5, 0.4),
+        purpleGlow
     );
+    rightEar.position.set(0.8, 1.15, 0);
+    robot.add(rightEar);
 
-    antennaBall.position.set(0, 2.2, 0);
-    robot.add(antennaBall);
-
-    /* BODY */
-
-    const body = new THREE.Mesh(
-        new THREE.BoxGeometry(1.45, 1.6, 0.9),
-        robotMaterial
+    /* DUAL TOP FIN / ANTENNA */
+    const topFin = new THREE.Mesh(
+        new THREE.BoxGeometry(0.12, 0.45, 0.6),
+        cyanGlow
     );
+    topFin.position.set(0, 1.9, -0.1);
+    robot.add(topFin);
 
-    body.position.y = -0.55;
-    robot.add(body);
-
-    const chestLight = new THREE.Mesh(
-        new THREE.BoxGeometry(0.45, 0.35, 0.08),
-        cyanMaterial
+    /* FLOATING SHOULDER ARMOR */
+    const leftShoulder = new THREE.Mesh(
+        new THREE.BoxGeometry(0.5, 0.5, 0.6),
+        purpleGlow
     );
+    leftShoulder.position.set(-1.0, 0.25, 0);
+    robot.add(leftShoulder);
 
-    chestLight.position.set(0, -0.45, 0.49);
-    robot.add(chestLight);
+    const rightShoulder = new THREE.Mesh(
+        new THREE.BoxGeometry(0.5, 0.5, 0.6),
+        purpleGlow
+    );
+    rightShoulder.position.set(1.0, 0.25, 0);
+    robot.add(rightShoulder);
 
     /* ARMS */
-
-    const armGeometry = new THREE.BoxGeometry(0.35, 1.1, 0.4);
-
-    const leftArm = new THREE.Mesh(armGeometry, robotMaterial);
-    leftArm.position.set(-1, -0.45, 0);
+    const leftArm = new THREE.Mesh(
+        new THREE.BoxGeometry(0.35, 1.1, 0.38),
+        armorMaterial
+    );
+    leftArm.position.set(-1.0, -0.4, 0);
     robot.add(leftArm);
 
-    const rightArm = new THREE.Mesh(armGeometry, robotMaterial);
-    rightArm.position.set(1, -0.45, 0);
+    const rightArm = new THREE.Mesh(
+        new THREE.BoxGeometry(0.35, 1.1, 0.38),
+        armorMaterial
+    );
+    rightArm.position.set(1.0, -0.4, 0);
     robot.add(rightArm);
 
     /* LEGS */
-
-    const legGeometry = new THREE.BoxGeometry(0.45, 0.8, 0.5);
-
-    const leftLeg = new THREE.Mesh(legGeometry, robotMaterial);
-    leftLeg.position.set(-0.43, -1.75, 0);
+    const leftLeg = new THREE.Mesh(
+        new THREE.BoxGeometry(0.42, 1.0, 0.45),
+        armorMaterial
+    );
+    leftLeg.position.set(-0.38, -1.7, 0);
     robot.add(leftLeg);
 
-    const rightLeg = new THREE.Mesh(legGeometry, robotMaterial);
-    rightLeg.position.set(0.43, -1.75, 0);
+    const rightLeg = new THREE.Mesh(
+        new THREE.BoxGeometry(0.42, 1.0, 0.45),
+        armorMaterial
+    );
+    rightLeg.position.set(0.38, -1.7, 0);
     robot.add(rightLeg);
 
     scene.add(robot);
 
     /* LIGHTING */
-
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.3);
     scene.add(ambientLight);
 
-    const mainLight = new THREE.PointLight(0x00f5ff, 2, 12);
-    mainLight.position.set(3, 3, 4);
-    scene.add(mainLight);
+    const pointLight1 = new THREE.PointLight(0x00f5ff, 2.5, 12);
+    pointLight1.position.set(3, 3, 4);
+    scene.add(pointLight1);
 
-    const purpleLight = new THREE.PointLight(0x9b5cff, 2, 12);
-    purpleLight.position.set(-3, 0, 3);
-    scene.add(purpleLight);
+    const pointLight2 = new THREE.PointLight(0x9b5cff, 2.5, 12);
+    pointLight2.position.set(-3, -1, 3);
+    scene.add(pointLight2);
 
     /* ANIMATION */
-
     function animate() {
-
         requestAnimationFrame(animate);
 
-        robot.rotation.y = Math.sin(Date.now() * 0.0005) * 0.22;
-        robot.position.y = Math.sin(Date.now() * 0.001) * 0.08;
+        const time = Date.now() * 0.001;
 
-        leftArm.rotation.z = Math.sin(Date.now() * 0.001) * 0.08;
-        rightArm.rotation.z = -Math.sin(Date.now() * 0.001) * 0.08;
+        robot.rotation.y = Math.sin(time * 0.8) * 0.25;
+        robot.position.y = Math.sin(time * 2) * 0.09;
+
+        leftArm.rotation.z = Math.sin(time * 1.5) * 0.12;
+        rightArm.rotation.z = -Math.sin(time * 1.5) * 0.12;
+
+        head.rotation.y = Math.sin(time * 1.2) * 0.18;
 
         renderer.render(scene, camera);
-
     }
 
     animate();
