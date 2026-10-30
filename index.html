@@ -1,479 +1,1786 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramotech — Build the Future with Robotics & AI</title>
-    <meta name="description" content="Ramotech offers hands-on Robotics, AI, STEM, Coding, and Electronics education in Ahmedabad.">
-    
-    <!-- Tailwind CSS (CDN) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAMOTECH | Learn. Build. Create. Innovate.</title>
 
-    <style>
-        body {
-    background-color: #fdf2f8; /* Light Pinkish White background */
-    color: #1e293b; /* Dark text for readability */
-    font-family: system-ui, -apple-system, sans-serif;
+<meta name="description" content="RAMOTECH - Explore STEM, Robotics, Electronics, IoT, Coding, AI, Drone Technology and 3D Printing.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #050816;
+    --card: rgba(12, 23, 45, 0.82);
+    --cyan: #00f5ff;
+    --blue: #287bff;
+    --purple: #9b5cff;
+    --white: #f5f8ff;
+    --muted: #a8b5cc;
+    --border: rgba(0,245,255,.2);
 }
-.glass-panel {
-    background: rgba(255, 255, 255, 0.85);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--white);
+    background: var(--bg);
+    overflow-x: hidden;
+}
+
+/* FUTURISTIC BACKGROUND */
+
+#background-video {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -5;
+    opacity: .22;
+}
+
+.background-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: -4;
+    background:
+        linear-gradient(rgba(5,8,22,.82), rgba(5,8,22,.94)),
+        radial-gradient(circle at 15% 20%, rgba(0,245,255,.16), transparent 35%),
+        radial-gradient(circle at 85% 60%, rgba(155,92,255,.16), transparent 40%);
+}
+
+.grid-background {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(0,245,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,245,255,.035) 1px, transparent 1px);
+    background-size: 45px 45px;
+    mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+.ambient {
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: .17;
+    pointer-events: none;
+    z-index: -2;
+    animation: float 12s ease-in-out infinite alternate;
+}
+
+.ambient.one {
+    background: var(--cyan);
+    top: 10%;
+    left: -150px;
+}
+
+.ambient.two {
+    background: var(--purple);
+    right: -150px;
+    bottom: 5%;
+    animation-delay: -5s;
+}
+
+@keyframes float {
+    from { transform: translate(0,0); }
+    to { transform: translate(80px,60px); }
+}
+
+/* COMMON */
+
+.container {
+    width: min(1150px, 92%);
+    margin: auto;
+}
+
+section {
+    padding: 100px 0;
+    scroll-margin-top: 80px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-heading h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(27px, 4vw, 42px);
+    margin-bottom: 15px;
+}
+
+.section-heading h2 span {
+    color: var(--cyan);
+}
+
+.section-heading p {
+    color: var(--muted);
+    max-width: 650px;
+    margin: auto;
+    line-height: 1.8;
+}
+
+.tag {
+    color: var(--cyan);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 13px 25px;
+    border-radius: 7px;
+    background: linear-gradient(110deg, var(--cyan), #3988ff);
+    color: #03101c;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+    font-family: inherit;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 25px rgba(0,245,255,.35);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+}
+
+.btn-outline:hover {
+    background: var(--cyan);
+    color: #03101c;
+}
+
+/* NAVIGATION */
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(5,8,22,.88);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo img {
+    width: 65px;
+    height: 55px;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #dbe8f7;
+    text-decoration: none;
+    font-size: 13px;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--cyan);
+}
+
+.menu-btn {
+    display: none;
+    color: var(--cyan);
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 110px;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 760px;
+}
+
+.hero-label {
+    display: inline-block;
+    border: 1px solid var(--border);
+    padding: 9px 17px;
+    border-radius: 30px;
+    color: var(--cyan);
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    background: rgba(0,245,255,.06);
+}
+
+.hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(42px, 7vw, 78px);
+    line-height: 1.15;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: var(--cyan);
+    text-shadow: 0 0 25px rgba(0,245,255,.3);
+}
+
+.hero p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.9;
+    max-width: 650px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 45px;
+    margin-top: 65px;
+}
+
+.stat h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 29px;
+    color: var(--cyan);
+}
+
+.stat p {
+    font-size: 12px;
+    margin: 5px 0 0;
+}
+
+/* GLASS CARDS */
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.glass-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 23px;
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(244, 114, 182, 0.2); /* Light pink border */
-    box-shadow: 0 4px 6px -1px rgba(244, 114, 182, 0.05);
+    transition: .35s;
+    overflow: hidden;
 }
-.gradient-text {
-    background: linear-gradient(135deg, #db2777 0%, #3b82f6 100%); /* Pink to Blue gradient */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 
-            scroll-behavior: smooth;
-        }
-    </style>
+.glass-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--cyan);
+    box-shadow: 0 12px 35px rgba(0,245,255,.1);
+}
+
+.course-image {
+    width: 100%;
+    height: 190px;
+    object-fit: contain;
+    padding: 10px;
+    margin-bottom: 20px;
+    background: rgba(0,245,255,.045);
+    border: 1px solid rgba(0,245,255,.1);
+    border-radius: 10px;
+    transition: .4s;
+}
+
+.glass-card:hover .course-image {
+    transform: scale(1.04);
+}
+
+.card-icon {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.glass-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 17px;
+    margin-bottom: 12px;
+    color: var(--cyan);
+}
+
+.glass-card p {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--muted);
+}
+
+.card-link {
+    display: inline-block;
+    margin-top: 18px;
+    color: var(--cyan);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ABOUT */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-visual {
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: rgba(0,245,255,.035);
+    overflow: hidden;
+}
+
+.about-logo {
+    width: 80%;
+    max-width: 300px;
+    height: 240px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 25px rgba(0,245,255,.3));
+}
+
+.about-badge {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    background: rgba(5,8,22,.88);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.about-badge strong {
+    display: block;
+    color: var(--cyan);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.about-text h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.about-text h2 span {
+    color: var(--cyan);
+}
+
+.about-text p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 2;
+    margin-bottom: 17px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.feature {
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    color: var(--cyan);
+    font-size: 13px;
+    background: rgba(0,245,255,.04);
+}
+
+/* WHY RAMOTECH */
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.why-card {
+    text-align: center;
+    padding: 28px 15px;
+}
+
+.why-card .card-icon {
+    font-size: 38px;
+}
+
+/* LEARNING JOURNEY */
+
+.journey {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+.journey-step {
+    text-align: center;
+    padding: 25px 15px;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: var(--card);
+}
+
+.step-number {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 17px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #06101d;
+    background: var(--cyan);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800;
+}
+
+.journey-step h3 {
+    color: var(--cyan);
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.journey-step p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+/* FAQ */
+
+.faq-list {
+    max-width: 800px;
+    margin: auto;
+}
+
+.faq-item {
+    margin-bottom: 13px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--card);
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 20px;
+    text-align: left;
+    border: none;
+    background: transparent;
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.faq-question span {
+    color: var(--cyan);
+}
+
+.faq-answer {
+    display: none;
+    padding: 0 20px 20px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+/* CONTACT */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 40px;
+}
+
+.contact-info h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+
+.contact-detail {
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    background: var(--card);
+    color: var(--cyan);
+    font-size: 13px;
+}
+
+.contact-form {
+    padding: 28px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+}
+
+.contact-form h3 {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 22px;
+}
+
+.form-group {
+    margin-bottom: 17px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: var(--muted);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 13px;
+    background: rgba(5,8,22,.8);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    outline: none;
+    color: white;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--cyan);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+/* CTA */
+
+.cta-box {
+    text-align: center;
+    padding: 60px 25px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background:
+        radial-gradient(circle at center, rgba(0,245,255,.13), transparent 65%),
+        var(--card);
+}
+
+.cta-box h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(25px,4vw,38px);
+    margin-bottom: 15px;
+}
+
+.cta-box h2 span {
+    color: var(--cyan);
+}
+
+.cta-box p {
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid var(--border);
+    padding: 35px 0;
+    background: rgba(3,7,18,.85);
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-logo img {
+    width: 75px;
+    height: 55px;
+    object-fit: contain;
+}
+
+.footer-content p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+}
+
+.footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.footer-links a:hover {
+    color: var(--cyan);
+}
+
+/* WHATSAPP */
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #25d366;
+    color: white;
+    font-size: 28px;
+    text-decoration: none;
+    z-index: 999;
+    box-shadow: 0 0 20px rgba(37,211,102,.4);
+    transition: .3s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+/* REVEAL ANIMATION */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: .7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ROBOT */
+
+#robot-canvas {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42%;
+    height: 500px;
+    pointer-events: none;
+    opacity: .85;
+    z-index: -1;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        padding: 25px;
+        flex-direction: column;
+        align-items: flex-start;
+        background: rgba(5,8,22,.98);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .why-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .journey {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    #robot-canvas {
+        opacity: .25;
+        width: 100%;
+    }
+}
+
+@media(max-width:600px) {
+    section {
+        padding: 75px 0;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-stats {
+        gap: 25px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .why-grid,
+    .journey {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        justify-content: center;
+        text-align: center;
+    }
+}
+</style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans selection:bg-cyan-500 selection:text-slate-950">
-    <!-- CONFIG & UTILITY SCRIPT -->
-    <script>
-        const CONFIG = {
-            companyName: "Ramotech",
-            tagline: "Learn. Build. Create. Innovate.",
-            whatsapp: "7096003080",
-            phoneDisplay: "+91 70960 03080",
-            email: "rp200846@gmail.com",
-            address: "D4 Natraj Estate, Nagarvel Hanuman, Amraiwadi, Ahmedabad, Gujarat – 380026",
-            mapsUrl: "https://maps.app.goo.gl/KDvE5pXEhfVKx5S49",
-            founder: "Dr. Jyoti R Prajapati"
-        };
 
-        function getWhatsAppUrl(type, itemName = "", grade = "") {
-            let msg = "";
-            switch(type) {
-                case 'course':
-                    msg = `Hello ${CONFIG.companyName}, I am interested in the ${itemName} course (${grade}). Please share the course details and fee structure.`;
-                    break;
-                case 'workshop':
-                    msg = `Hello ${CONFIG.companyName}, I am interested in the ${itemName} Workshop. Please share the upcoming dates and details.`;
-                    break;
-                case 'school':
-                    msg = `Hello ${CONFIG.companyName}, I am interested in your School Robotics/AI Lab setup and STEM Program. Please share details.`;
-                    break;
-                case 'demo':
-                    msg = `Hello ${CONFIG.companyName}, I would like to book a 1-hour free practical demo class for my child.`;
-                    break;
-                case 'service':
-                    msg = `Hello ${CONFIG.companyName}, I am interested in your ${itemName} solutions. Please share complete information.`;
-                    break;
-                default:
-                    msg = `Hello ${CONFIG.companyName}, I have an enquiry regarding your programs.`;
-            }
-            return `https://wa.me/91${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
-        }
-    </script>
+<body>
 
-    <!-- HEADER / NAVIGATION -->
-    <header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-cyan-900/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                
-                <!-- Logo -->
-                <a href="#home" class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 p-0.5 shadow-[0_0_15px_rgba(6,182,212,0.4)]">
-                        <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                            <i data-lucide="bot" class="w-6 h-6 text-cyan-400"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <span class="font-bold text-lg tracking-wider text-white block leading-none">RAMOTECH</span>
-                        
-                    </div>
-                </a>
+<!-- BACKGROUND VIDEO -->
+<video autoplay muted loop playsinline id="background-video">
+    <source src="https://videos.pexels.com/video-files/3141208/3141208-hd_1920_1080_25fps.mp4" type="video/mp4">
+</video>
 
-                <!-- Desktop Nav -->
-                <nav class="hidden lg:flex items-center gap-6 text-xs uppercase tracking-wider font-medium text-slate-300">
-                    <a href="#home" class="hover:text-cyan-400 transition-colors">Home</a>
-                    <a href="#courses" class="hover:text-cyan-400 transition-colors">Courses</a>
-                    <a href="#workshops" class="hover:text-cyan-400 transition-colors">Workshops</a>
-                    <a href="#services" class="hover:text-cyan-400 transition-colors">Services</a>
-                    <a href="#schools" class="hover:text-cyan-400 transition-colors">School Programs</a>
-                    <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
-                    <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
-                    <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
-                </nav>
+<div class="background-overlay"></div>
+<div class="grid-background"></div>
+<div class="ambient one"></div>
+<div class="ambient two"></div>
 
-                <!-- Header CTA -->
-                <div class="hidden lg:flex items-center gap-4">
-                    <a id="nav-demo-btn" href="#" target="_blank" class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium text-xs uppercase tracking-wider px-5 py-2.5 rounded-lg shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:scale-105 transition-all">
-                        Book Free Demo
-                    </a>
+<!-- HEADER -->
+<header>
+    <div class="container navbar">
+
+        <a href="#home" class="logo">
+            <img src="20.png" alt="RAMOTECH Logo">
+        </a>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#workshops">Workshops</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#why">Why RAMOTECH</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <canvas id="robot-canvas"></canvas>
+
+    <div class="container">
+        <div class="hero-content reveal">
+
+            <div class="hero-label">
+                FUTURE TECHNOLOGY & INNOVATION
+            </div>
+
+            <h1>
+                THINK BIG.<br>
+                <span>BUILD SMART.</span><br>
+                CREATE FUTURE.
+            </h1>
+
+            <p>
+                Welcome to RAMOTECH — where young minds explore
+                Science, Technology, Robotics, Artificial Intelligence
+                and Engineering through practical, hands-on learning.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#programs" class="btn">Explore Programs →</a>
+                <a href="#contact" class="btn btn-outline">Get in Touch</a>
+            </div>
+
+            <div class="hero-stats">
+
+                <div class="stat">
+                    <h3>20+</h3>
+                    <p>Technology Courses</p>
                 </div>
 
-                <!-- Mobile Menu Button -->
-                <button id="mobile-toggle" class="lg:hidden p-2 text-slate-300 hover:text-cyan-400">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
+                <div class="stat">
+                    <h3>10+</h3>
+                    <p>Special Workshops</p>
+                </div>
+
+                <div class="stat">
+                    <h3>100%</h3>
+                    <p>Practical Learning</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+            <span class="tag">Explore & Discover</span>
+            <h2>Our <span>Technology Programs</span></h2>
+            <p>
+                Discover exciting learning experiences designed to
+                develop creativity, technical knowledge and problem-solving skills.
+            </p>
+        </div>
+
+        <div class="cards-grid">
+
+            <article class="glass-card reveal">
+                <img src="3.jpeg" alt="Junior STEM" class="course-image">
+                <div class="card-icon">🧩</div>
+                <h3>JR. STEM</h3>
+                <p>
+                    An exciting introduction to Science, Technology,
+                    Engineering and Mathematics through fun activities,
+                    experiments and creative challenges.
+                </p>
+                <a href="#contact" class="card-link">Enquire Now →</a>
+            </article>
+
+            <article class="glass-card reveal">
+                <img src="12.png" alt="Senior STEM" class="course-image">
+                <div class="card-icon">🔬</div>
+                <h3>SR. STEM</h3>
+                <p>
+                    Explore scientific concepts, engineering principles,
+                    innovation and practical problem-solving with
+                    advanced hands-on activities.
+                </p>
+                <a href="#contact" class="card-link">Enquire Now →</a>
+            </article>
+
+            <article class="glass-card reveal">
+                <img src="71.png" alt="Junior Robotics" class="course-image">
+                <div class="card-icon">🤖</div>
+                <h3>JR. ROBOTICS</h3>
+                <p>
+                    Build your first robots, understand basic mechanisms
+                    and discover how machines can sense, move and interact.
+                </p>
+                <a href="#contact" class="card-link">Enquire Now →</a>
+            </article>
+
+            <article class="glass-card reveal">
+                <img src="13.png" alt="Senior Robotics" class="course-image">
+                <div class="card-icon">⚙️</div>
+                <h3>SR. ROBOTICS</h3>
+                <p>
+                    Learn advanced robotics, sensors, motors,
+                    automation and intelligent robotic systems
+                    through practical projects.
+                </p>
+                <a href="#contact" class="card-link">Enquire Now →</a>
+            </article>
+
+            <article class="glass-card reveal">
+                <img src="9.jpg" alt="Electronics and IoT" class="course-image">
+                <div class="card-icon">💡</div>
+                <h3>ELECTRONICS & IoT</h3>
+                <p>
+                    Understand electronic components, circuits,
+                    sensors and the Internet of Things by creating
+                    smart connected devices.
+                </p>
+                <a href="#contact" class="card-link">Enquire Now →</a>
+            </article>
+
+            <article class="glass-card reveal">
+                <img src="11.jpg" alt="Coding Engineering" class="course-image">
+                <div class="card-icon">💻</div>
+                <h3>CODING ENGINEERING</h3>
+                <p>
+                    Develop logical thinking and programming skills.
+                    Learn how to turn ideas into digital solutions
+                    using coding and computational thinking.
+                </p>
+                <a href="#contact" class="card-link">Enquire Now →</a>
+            </article>
+
+            <article class="glass-card reveal">
+                <img src="31.jpg" alt="3D Printing and AutoCAD" class="course-image">
+                <div class="card-icon">🖨️</div>
+                <h3>3D PRINTING & AUTOCAD</h3>
+                <p>
+                    Discover 3D designing, digital modelling,
+                    CAD fundamentals and the process of turning
+                    digital designs into real objects.
+                </p>
+                <a href="#contact" class="card-link">Enquire Now →</a>
+            </article>
+
+            <article class="glass-card reveal">
+                <img src="32.png" alt="Drone Technology" class="course-image">
+                <div class="card-icon">🚁</div>
+                <h3>DRONE TECHNOLOGY</h3>
+                <p>
+                    Explore drone technology, flight principles,
+                    components, controls and applications of
+                    unmanned aerial systems.
+                </p>
+                <a href="#contact" class="card-link">Enquire Now →</a>
+            </article>
+
+            <article class="glass-card reveal">
+                <img src="33.jpg" alt="Artificial Intelligence and Machine Learning" class="course-image">
+                <div class="card-icon">🧠</div>
+                <h3>AI & MACHINE LEARNING</h3>
+                <p>
+                    Discover Artificial Intelligence, machine learning,
+                    smart applications and the technology shaping
+                    tomorrow's world.
+                </p>
+                <a href="#contact" class="card-link">Enquire Now →</a>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- WORKSHOPS -->
+<section id="workshops">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+            <span class="tag">Learn by Doing</span>
+            <h2>Special <span>Workshops</span></h2>
+            <p>
+                Interactive technology workshops that encourage
+                students to experiment, explore and innovate.
+            </p>
+        </div>
+
+        <div class="cards-grid">
+
+            <article class="glass-card reveal">
+                <div class="card-icon">🤖</div>
+                <h3>Robotics Workshop</h3>
+                <p>
+                    Explore robot building, motors, sensors
+                    and basic automation through hands-on activities.
+                </p>
+                <a href="#contact" class="card-link">Join Workshop →</a>
+            </article>
+
+            <article class="glass-card reveal">
+                <div class="card-icon">💡</div>
+                <h3>Electronics Workshop</h3>
+                <p>
+                    Learn about circuits, electronic components
+                    and practical applications of electronics.
+                </p>
+                <a href="#contact" class="card-link">Join Workshop →</a>
+            </article>
+
+            <article class="glass-card reveal">
+                <div class="card-icon">🚁</div>
+                <h3>Drone Workshop</h3>
+                <p>
+                    Understand drone components, flight basics
+                    and real-world applications of drone technology.
+                </p>
+                <a href="#contact" class="card-link">Join Workshop →</a>
+            </article>
+
+            <article class="glass-card reveal">
+                <div class="card-icon">🧠</div>
+                <h3>Artificial Intelligence Workshop</h3>
+                <p>
+                    Get introduced to AI concepts and discover
+                    how intelligent systems work in everyday life.
+                </p>
+                <a href="#contact" class="card-link">Join Workshop →</a>
+            </article>
+
+            <article class="glass-card reveal">
+                <div class="card-icon">🖨️</div>
+                <h3>3D Printing Workshop</h3>
+                <p>
+                    Experience digital design and learn how
+                    3D printers transform designs into physical objects.
+                </p>
+                <a href="#contact" class="card-link">Join Workshop →</a>
+            </article>
+
+            <article class="glass-card reveal">
+                <div class="card-icon">💻</div>
+                <h3>Coding Workshop</h3>
+                <p>
+                    Build logical thinking and discover the
+                    fundamentals of programming and coding.
+                </p>
+                <a href="#contact" class="card-link">Join Workshop →</a>
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+            <span class="tag">Who We Are</span>
+            <h2>About <span>RAMOTECH</span></h2>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-visual reveal">
+                <img src="20.png" alt="RAMOTECH Logo" class="about-logo">
+
+                <div class="about-badge">
+                    <strong>RAMOTECH</strong>
+                    Learn. Build. Create. Innovate.
+                </div>
+            </div>
+
+            <div class="about-text reveal">
+
+                <h2>Building Tomorrow's <span>Innovators</span></h2>
+
+                <p>
+                    RAMOTECH is focused on making technology and
+                    engineering education exciting, practical and accessible.
+                </p>
+
+                <p>
+                    We believe that students learn best when they
+                    explore ideas, build models, experiment with technology
+                    and solve real-world problems.
+                </p>
+
+                <p>
+                    Through STEM education, robotics, electronics,
+                    coding, Artificial Intelligence and emerging technologies,
+                    we aim to encourage curiosity and innovation.
+                </p>
+
+                <div class="features">
+                    <div class="feature">✓ Hands-on Learning</div>
+                    <div class="feature">✓ Creative Thinking</div>
+                    <div class="feature">✓ Practical Skills</div>
+                    <div class="feature">✓ Future Technology</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY RAMOTECH -->
+<section id="why">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+            <span class="tag">Our Approach</span>
+            <h2>Why Choose <span>RAMOTECH?</span></h2>
+            <p>
+                Learning technology is more exciting when students
+                experience it through practical activities.
+            </p>
+        </div>
+
+        <div class="why-grid">
+
+            <div class="glass-card why-card reveal">
+                <div class="card-icon">🔧</div>
+                <h3>Practical Learning</h3>
+                <p>Learn concepts through experiments, activities and making.</p>
+            </div>
+
+            <div class="glass-card why-card reveal">
+                <div class="card-icon">🚀</div>
+                <h3>Future Skills</h3>
+                <p>Explore emerging technologies and develop useful skills.</p>
+            </div>
+
+            <div class="glass-card why-card reveal">
+                <div class="card-icon">💡</div>
+                <h3>Creative Thinking</h3>
+                <p>Encourage curiosity, creativity and innovative ideas.</p>
+            </div>
+
+            <div class="glass-card why-card reveal">
+                <div class="card-icon">🧩</div>
+                <h3>Problem Solving</h3>
+                <p>Understand challenges and develop solutions step by step.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- LEARNING JOURNEY -->
+<section id="journey">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+            <span class="tag">Start Your Journey</span>
+            <h2>From Ideas to <span>Innovation</span></h2>
+            <p>
+                A learning experience that takes students
+                from curiosity to creating something of their own.
+            </p>
+        </div>
+
+        <div class="journey">
+
+            <div class="journey-step reveal">
+                <div class="step-number">01</div>
+                <h3>EXPLORE</h3>
+                <p>Discover new technologies, concepts and possibilities.</p>
+            </div>
+
+            <div class="journey-step reveal">
+                <div class="step-number">02</div>
+                <h3>LEARN</h3>
+                <p>Understand the fundamentals through guided learning.</p>
+            </div>
+
+            <div class="journey-step reveal">
+                <div class="step-number">03</div>
+                <h3>CREATE</h3>
+                <p>Build models, experiment and apply your knowledge.</p>
+            </div>
+
+            <div class="journey-step reveal">
+                <div class="step-number">04</div>
+                <h3>INNOVATE</h3>
+                <p>Use your ideas and skills to develop new solutions.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+            <span class="tag">Need Help?</span>
+            <h2>Frequently Asked <span>Questions</span></h2>
+            <p>Find answers to some common questions about RAMOTECH.</p>
+        </div>
+
+        <div class="faq-list">
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    What is RAMOTECH?
+                    <span>＋</span>
                 </button>
-            </div>
-        </div>
-
-        <!-- Mobile Drawer -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-slate-950 border-b border-cyan-900/40 px-4 py-6 space-y-3">
-            <a href="#home" class="block text-sm font-medium text-slate-200">Home</a>
-            <a href="#courses" class="block text-sm font-medium text-slate-200">Courses</a>
-            <a href="#workshops" class="block text-sm font-medium text-slate-200">Workshops</a>
-            <a href="#services" class="block text-sm font-medium text-slate-200">Services</a>
-            <a href="#schools" class="block text-sm font-medium text-slate-200">School Programs</a>
-            <a href="#projects" class="block text-sm font-medium text-slate-200">Projects</a>
-            <a href="#about" class="block text-sm font-medium text-slate-200">About</a>
-            <a href="#contact" class="block text-sm font-medium text-slate-200">Contact</a>
-        </div>
-    </header>
-
-    <!-- HERO SECTION -->
-    <section id="home" class="relative pt-12 pb-24 overflow-hidden bg-grid border-b border-slate-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800/50 text-cyan-400 text-xs font-mono">
-                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Next-Gen Technology Education
-                    </div>
-                    
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
-                        Build the Future with <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">Robotics & AI</span>
-                    </h1>
-                    
-                    <p class="text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed">
-                        Hands-on Robotics, Artificial Intelligence, STEM, Coding, and Electronics programs designed to turn curious students into confident creators.
-                    </p>
-
-                    <div class="flex flex-wrap items-center gap-4 pt-2">
-                        <a href="#courses" class="px-6 py-3.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-sm shadow-[0_0_20px_rgba(6,182,212,0.4)]">
-                            Explore Courses
-                        </a>
-                        <a id="hero-demo-btn" href="#" target="_blank" class="px-6 py-3.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-cyan-400 font-semibold text-sm border border-cyan-800/50">
-                            Book Free Demo
-                        </a>
-                    </div>
-
-                    <div class="pt-4 flex items-center gap-3 text-xs font-mono text-slate-400">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        <span TAGLINE: "Learn. Build. Create. Innovate."></span>
-                    </div>
-                </div>
-
-                <!-- Logo & Futuristic Placeholder Card -->
-                <div class="lg:col-span-5">
-                    <div class="bg-slate-900/90 border border-cyan-800/50 p-6 rounded-2xl space-y-4 shadow-2xl">
-                        <div class="border-2 border-dashed border-cyan-500/30 bg-slate-950 rounded-xl p-8 text-center flex flex-col items-center justify-center">
-                           
-                           <img src="20.png"
-                               alt="RAMOTECH prv.ltd Logo"
-                               style="width:300px; height:300px:
-                                   object-fit:cover;
-                               border-radius:0px">
-                        </div>
-                        <div class="grid grid-cols-2 gap-3 text-center">
-                            <div class="bg-slate-950 p-3 rounded-lg border border-slate-800">
-                                <i data-lucide="cpu" class="w-5 h-5 text-cyan-400 mx-auto mb-1"></i>
-                                <span class="text-xs text-slate-300">Practical Labs</span>
-                            </div>
-                            <div class="bg-slate-950 p-3 rounded-lg border border-slate-800">
-                                <i data-lucide="zap" class="w-5 h-5 text-cyan-400 mx-auto mb-1"></i>
-                                <span class="text-xs text-slate-300">Project-Based</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- TRUST INDICATORS -->
-    <section class="py-10 bg-slate-950/80 border-b border-slate-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
-                <div class="p-4 bg-slate-900/50 rounded-xl border border-slate-800"><i data-lucide="check-circle" class="w-4 h-4 text-cyan-400 mx-auto mb-1"></i><span class="text-xs font-semibold text-slate-200">Hands-on Learning</span></div>
-                <div class="p-4 bg-slate-900/50 rounded-xl border border-slate-800"><i data-lucide="check-circle" class="w-4 h-4 text-cyan-400 mx-auto mb-1"></i><span class="text-xs font-semibold text-slate-200">Project-Based</span></div>
-                <div class="p-4 bg-slate-900/50 rounded-xl border border-slate-800"><i data-lucide="check-circle" class="w-4 h-4 text-cyan-400 mx-auto mb-1"></i><span class="text-xs font-semibold text-slate-200">Practical Skills</span></div>
-                <div class="p-4 bg-slate-900/50 rounded-xl border border-slate-800"><i data-lucide="check-circle" class="w-4 h-4 text-cyan-400 mx-auto mb-1"></i><span class="text-xs font-semibold text-slate-200">Robotics & AI</span></div>
-                <div class="p-4 bg-slate-900/50 rounded-xl border border-slate-800"><i data-lucide="check-circle" class="w-4 h-4 text-cyan-400 mx-auto mb-1"></i><span class="text-xs font-semibold text-slate-200">STEM Education</span></div>
-                <div class="p-4 bg-slate-900/50 rounded-xl border border-slate-800"><i data-lucide="check-circle" class="w-4 h-4 text-cyan-400 mx-auto mb-1"></i><span class="text-xs font-semibold text-slate-200">Innovation First</span></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- COURSES SECTION -->
-    <section id="courses" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-            <span class="text-xs font-mono uppercase text-cyan-400">Programs</span>
-            <h2 class="text-3xl font-bold text-white mt-1">Our Engineering & STEM Courses</h2>
-            <p class="text-sm text-slate-400 mt-2">Structured technology tracks for Grade 1 through High School and beyond.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <!-- Course 1 -->
-            <div class="bg-slate-900/70 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all">
-                <div>
-                    <div class="border border-dashed border-cyan-40 bg-slate-45 suqare-1xl p-6 text-center mb-2">
-                           <img src="3.jpeg"
-                               alt="jr-stem"
-                               style="width:700px; height:700px:
-                               border-radius:0px">
-                    </div>
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-[10px] font-mono text-cyan-400 px-2 py-0.5 rounded bg-cyan-950 border border-cyan-800">Grade 1–2</span>
-                        <span class="text-xs text-slate-400 font-mono">40 Sessions (1 Hr)</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">JR. STEM</h3>
-                    <p class="text-xs text-slate-400 mb-4">Foundational STEM exploration introducing mechanics, simple machines, and creative problem solving.</p>
-                </div>
-                <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
-                    <div><span class="text-[10px] text-slate-500 uppercase block">Fee Structure</span><span class="text-xs font-bold text-cyan-300">Enquire for Fees</span></div>
-                    <a href="#" onclick="window.open(getWhatsAppUrl('course', 'JR. STEM', 'Grade 1–2'))" class="bg-emerald-600 text-white text-xs px-4 py-2 rounded-lg font-medium">Enquire</a>
+                <div class="faq-answer">
+                    RAMOTECH focuses on practical technology education
+                    including STEM, Robotics, Electronics, IoT, Coding,
+                    AI and other emerging technologies.
                 </div>
             </div>
 
-            <!-- Course 2 -->
-            <div class="bg-slate-900/70 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all">
-                <div>
-                    <div class="border border-dashed border-cyan-800 bg-slate-950 rounded-xl p-6 text-center mb-4">
-                         <img src="12.png"
-                               alt="sr-stem"
-                               style="width:700px; height:700px:
-                               border-radius:0px">
-                    </div>
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-[10px] font-mono text-cyan-400 px-2 py-0.5 rounded bg-cyan-950 border border-cyan-800">Grade 3–4</span>
-                        <span class="text-xs text-slate-400 font-mono">40 Sessions (1 Hr)</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">SR. STEM</h3>
-                    <p class="text-xs text-slate-400 mb-4">Applied science, compound mechanics, electrical circuits, and introductory algorithmic thinking.</p>
-                </div>
-                <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
-                    <div><span class="text-[10px] text-slate-500 uppercase block">Fee Structure</span><span class="text-xs font-bold text-cyan-300">Enquire for Fees</span></div>
-                    <a href="#" onclick="window.open(getWhatsAppUrl('course', 'SR. STEM', 'Grade 3–4'))" class="bg-emerald-600 text-white text-xs px-4 py-2 rounded-lg font-medium">Enquire</a>
+            <div class="faq-item">
+                <button class="faq-question">
+                    Which courses are available?
+                    <span>＋</span>
+                </button>
+                <div class="faq-answer">
+                    Programs include Junior and Senior STEM,
+                    Robotics, Electronics & IoT, Coding Engineering,
+                    3D Printing & AutoCAD, Drone Technology,
+                    AI and Machine Learning.
                 </div>
             </div>
 
-            <!-- Course 3 -->
-            <div class="bg-slate-900/70 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all">
-                <div>
-                    <div class="border border-dashed border-cyan-800 bg-slate-950 rounded-xl p-6 text-center mb-4">
-                         <img src="71.png"
-                               alt="jr-robotics"
-                               style="width:700px; height:700px:
-                               border-radius:0px">
-                    </div>
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-[10px] font-mono text-cyan-400 px-2 py-0.5 rounded bg-cyan-950 border border-cyan-800">Grade 5–6</span>
-                        <span class="text-xs text-slate-400 font-mono">40 Sessions (1.5 Hrs)</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">JR. Robotics</h3>
-                    <p class="text-xs text-slate-400 mb-4">Physical computing, microcontrollers, ultrasonic/IR sensors, and block coding logic.</p>
-                </div>
-                <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
-                    <div><span class="text-[10px] text-slate-500 uppercase block">Fee Structure</span><span class="text-xs font-bold text-cyan-300">Enquire for Fees</span></div>
-                    <a href="#" onclick="window.open(getWhatsAppUrl('course', 'JR. Robotics', 'Grade 5–6'))" class="bg-emerald-600 text-white text-xs px-4 py-2 rounded-lg font-medium">Enquire</a>
+            <div class="faq-item">
+                <button class="faq-question">
+                    Are the programs practical?
+                    <span>＋</span>
+                </button>
+                <div class="faq-answer">
+                    The learning approach focuses on practical activities,
+                    experiments, technology exploration and hands-on learning.
                 </div>
             </div>
 
-            <!-- Course 4 -->
-            <div class="bg-slate-900/70 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all">
-                <div>
-                    <div class="border border-dashed border-cyan-800 bg-slate-950 rounded-xl p-6 text-center mb-4">
-                         <img src="13.png"
-                               alt="sr- robotics"
-                               style="width:700px; height:700px:
-                               border-radius:0px">
-                    </div>
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-[10px] font-mono text-cyan-400 px-2 py-0.5 rounded bg-cyan-950 border border-cyan-800">Grade 7+</span>
-                        <span class="text-xs text-slate-400 font-mono">40 Sessions (1.5 Hrs)</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">SR. Robotics</h3>
-                    <p class="text-xs text-slate-400 mb-4">Embedded C++ programming, motor drivers, wireless communication, and autonomous navigation.</p>
-                </div>
-                <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
-                    <div><span class="text-[10px] text-slate-500 uppercase block">Fee Structure</span><span class="text-xs font-bold text-cyan-300">Enquire for Fees</span></div>
-                    <a href="#" onclick="window.open(getWhatsAppUrl('course', 'SR. Robotics', 'Grade 7+'))" class="bg-emerald-600 text-white text-xs px-4 py-2 rounded-lg font-medium">Enquire</a>
+            <div class="faq-item">
+                <button class="faq-question">
+                    How can I enquire about a course?
+                    <span>＋</span>
+                </button>
+                <div class="faq-answer">
+                    You can contact RAMOTECH using the contact form
+                    or WhatsApp button available on this website.
                 </div>
             </div>
 
-            <!-- Course 5 -->
-            <div class="bg-slate-900/70 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all">
-                <div>
-                    <div class="border border-dashed border-cyan-800 bg-slate-950 rounded-xl p-6 text-center mb-4">
-                        <img src="9.jpg"
-                               alt="Electronics and IOT"
-                               style="width:700px; height:700px:
-                               border-radius:0px">
-                    </div>
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-[10px] font-mono text-cyan-400 px-2 py-0.5 rounded bg-cyan-950 border border-cyan-800">Grade 8+</span>
-                        <span class="text-xs text-slate-400 font-mono">50 Hours</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Electronics & IoT</h3>
-                    <p class="text-xs text-slate-400 mb-4">Cloud dashboards, ESP32/NodeMCU, Wi-Fi telemetry, and real-world smart automation.</p>
-                </div>
-                <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
-                    <div><span class="text-[10px] text-slate-500 uppercase block">Fee Structure</span><span class="text-xs font-bold text-cyan-300">Enquire for Fees</span></div>
-                    <a href="#" onclick="window.open(getWhatsAppUrl('course', 'Electronics & IoT', 'Grade 8+'))" class="bg-emerald-600 text-white text-xs px-4 py-2 rounded-lg font-medium">Enquire</a>
-                </div>
-            </div>
-
-            <!-- Course 6 -->
-            <div class="bg-slate-900/70 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-6 flex flex-col justify-between transition-all">
-                <div>
-                    <div class="border border-dashed border-cyan-800 bg-slate-950 rounded-xl p-6 text-center mb-4">
-                        <img src="11.jpg"
-                               alt="Coding Engineering"
-                               style="width:700px; height:700px:
-                               border-radius:0px">
-                    </div>
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-[10px] font-mono text-cyan-400 px-2 py-0.5 rounded bg-cyan-950 border border-cyan-800">Grade 8+</span>
-                        <span class="text-xs text-slate-400 font-mono">40 Sessions (1 Hr)</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Coding Engineering</h3>
-                    <p class="text-xs text-slate-400 mb-4">Software engineering logic, Python algorithms, Object-Oriented Programming, and file automation.</p>
-                </div>
-                <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
-                    <div><span class="text-[10px] text-slate-500 uppercase block">Fee Structure</span><span class="text-xs font-bold text-cyan-300">Enquire for Fees</span></div>
-                    <a href="#" onclick="window.open(getWhatsAppUrl('course', 'Coding Engineering', 'Grade 8+'))" class="bg-emerald-600 text-white text-xs px-4 py-2 rounded-lg font-medium">Enquire</a>
+            <div class="faq-item">
+                <button class="faq-question">
+                    Does RAMOTECH conduct workshops?
+                    <span>＋</span>
+                </button>
+                <div class="faq-answer">
+                    Yes. RAMOTECH offers special technology workshops
+                    covering different areas of science and technology.
+                    Contact us for details.
                 </div>
             </div>
 
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- WORKSHOPS -->
-    <section id="workshops" class="py-20 bg-slate-950 border-t border-slate-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-xs font-mono uppercase text-cyan-400">Bootcamps</span>
-                <h2 class="text-3xl font-bold text-white mt-1">10-Hour Hands-On Workshops</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Workshop 1: 3D Design image added (31.jpg) -->
-                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-                    <img src="31.jpg" alt="3D Design & Tinkercad Workshop"
-                         class="w-full h-44 object-cover rounded-xl mb-4">
-                    <h3 class="text-lg font-bold text-white mb-2">3D Printing & Autocad</h3>
-                    <p class="text-xs text-slate-400 mb-4">Learn CAD spatial modeling and 3D printing concepts.</p>
-                    <a href="#" onclick="window.open(getWhatsAppUrl('workshop', '3D Design'))" class="text-xs font-semibold text-emerald-400 hover:underline">Enquire on WhatsApp →</a>
-                </div>
-
-                <!-- Workshop 2: Drone image added (32.png) -->
-                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-                    <img src="32.png" alt="Drone Technology Workshop"
-                         class="w-full h-44 object-cover rounded-xl mb-4">
-                    <h3 class="text-lg font-bold text-white mb-2">Drone Technology</h3>
-                    <p class="text-xs text-slate-400 mb-4">Aerodynamics, flight controllers, ESCs, and quadcopter assembly.</p>
-                    <a href="#" onclick="window.open(getWhatsAppUrl('workshop', 'Drone Technology'))" class="text-xs font-semibold text-emerald-400 hover:underline">Enquire on WhatsApp →</a>
-                </div>
-
-                <!-- Workshop 3: AI/ML image added (33.jpg) -->
-                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-                    <img src="33.jpg" alt="AI & Machine Learning Workshop"
-                         class="w-full h-44 object-cover rounded-xl mb-4">
-                    <h3 class="text-lg font-bold text-white mb-2">AI & Machine Learning</h3>
-                    <p class="text-xs text-slate-400 mb-4">Computer vision, model training, and vision-guided automation.</p>
-                    <a href="#" onclick="window.open(getWhatsAppUrl('workshop', 'AI/ML'))" class="text-xs font-semibold text-emerald-400 hover:underline">Enquire on WhatsApp →</a>
-                </div>
-            </div>
+<!-- CTA -->
+<section>
+    <div class="container">
+        <div class="cta-box reveal">
+            <span class="tag">Your Future Starts Here</span>
+            <h2>Ready to Explore <span>Technology?</span></h2>
+            <p>
+                Take the first step towards learning, creating
+                and innovating with RAMOTECH.
+            </p>
+            <a href="#contact" class="btn">Connect With Us →</a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- SCHOOL PROGRAMS -->
-    <section id="schools" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-slate-900/80 border border-slate-800 p-8 md:p-12 rounded-3xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div class="lg:col-span-7 space-y-4">
-                <span class="text-xs font-mono uppercase text-cyan-400">Institutional Collaboration</span>
-                <h2 class="text-3xl font-bold text-white">Bring Robotics & AI Labs to Your School</h2>
-                <p class="text-sm text-slate-300">We setup complete physical STEM/Robotics labs, provide certified curricula, and train faculty for educational institutions.</p>
-            </div>
-            <div class="lg:col-span-5 text-center lg:text-right">
-                <a href="#" onclick="window.open(getWhatsAppUrl('school'))" class="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm px-6 py-3.5 rounded-xl shadow-lg">
-                    Inquire for School Partnership
-                </a>
-            </div>
+<!-- CONTACT -->
+<section id="contact">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+            <span class="tag">Let's Connect</span>
+            <h2>Contact <span>RAMOTECH</span></h2>
+            <p>
+                Have questions about our programs or workshops?
+                Send us a message.
+            </p>
         </div>
-    </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="py-20 bg-slate-950 border-t border-slate-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-6 space-y-4">
-                    <span class="text-xs font-mono uppercase text-cyan-400">About Ramotech</span>
-                    <h2 class="text-3xl font-bold text-white">Founded in 2022</h2>
-                    <p class="text-sm text-slate-300 leading-relaxed">
-                        Ramotech bridges the gap between theoretical textbook science and practical technology application. We empower students through project-driven learning.
-                    </p>
-               
-                </div>
-            </div>
-        </div>
-    </section>
+        <div class="contact-grid">
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div class="lg:col-span-5 space-y-4">
-                <span class="text-xs font-mono uppercase text-cyan-400">Contact</span>
-                <h2 class="text-3xl font-bold text-white">Reach Our Center</h2>
-                
-                <div class="space-y-3 text-xs text-slate-300">
-                    <p><strong>Address:</strong> D4 Natraj Estate, Nagarvel Hanuman, Amraiwadi, Ahmedabad, Gujarat – 380026</p>
-                    <p><strong>Phone / WhatsApp:</strong> +91 70960 03080</p>
-                    <p><strong>Email:</strong> rp200846@gmail.com</p>
-                    <p><strong>Hours:</strong> Mon–Sat: 6:00 AM – 10:00 PM</p>
+            <div class="contact-info reveal">
+
+                <h3>Let's Start a Conversation</h3>
+
+                <p>
+                    Interested in technology programs, workshops
+                    or educational collaborations? Get in touch
+                    with the RAMOTECH team.
+                </p>
+
+                <div class="contact-detail">
+                    📍 RAMOTECH, Ahmedabad, Gujarat
                 </div>
 
-                <a href="https://maps.app.goo.gl/KDvE5pXEhfVKx5S49" target="_blank" class="inline-block bg-slate-900 border border-cyan-800 text-cyan-400 text-xs px-4 py-2.5 rounded-lg">
-                    Open Google Maps
-                </a>
+                <div class="contact-detail">
+                    💬 Connect with us on WhatsApp
+                </div>
+
+                <div class="contact-detail">
+                    🌐 Technology | Innovation | Education
+                </div>
+
             </div>
 
-            <div class="lg:col-span-7 bg-slate-900 p-8 rounded-2xl border border-slate-800">
-                <h3 class="text-lg font-bold text-white mb-4">Book Free 1-Hour Demo</h3>
-                <form onsubmit="event.preventDefault(); window.open(getWhatsAppUrl('demo'));" class="space-y-4">
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" placeholder="Parent Name *" required class="bg-slate-950 border border-slate-800 p-3 rounded-lg text-xs text-white">
-                        <input type="tel" placeholder="Mobile Number *" required class="bg-slate-950 border border-slate-800 p-3 rounded-lg text-xs text-white">
-                    </div>
-                    <textarea placeholder="Message / Course Interest..." rows="3" class="w-full bg-slate-950 border border-slate-800 p-3 rounded-lg text-xs text-white"></textarea>
-                    <button type="submit" class="w-full bg-emerald-600 text-white font-semibold text-xs py-3 rounded-lg">
-                        Submit & Connect on WhatsApp
-                    </button>
-                </form>
-            </div>
+            <form class="contact-form reveal" id="contactForm">
+
+                <h3>Send an Enquiry</h3>
+
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Mobile Number</label>
+                    <input type="tel" id="phone" placeholder="Enter mobile number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="course">Interested Program</label>
+                    <select id="course" required>
+                        <option value="">Select a program</option>
+                        <option>JR. STEM</option>
+                        <option>SR. STEM</option>
+                        <option>JR. Robotics</option>
+                        <option>SR. Robotics</option>
+                        <option>Electronics & IoT</option>
+                        <option>Coding Engineering</option>
+                        <option>3D Printing & AutoCAD</option>
+                        <option>Drone Technology</option>
+                        <option>AI & Machine Learning</option>
+                        <option>Special Workshops</option>
+                        <option>Other Enquiry</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" placeholder="Write your message..."></textarea>
+                </div>
+
+                <button type="submit" class="btn">
+                    Send Enquiry on WhatsApp →
+                </button>
+
+            </form>
+
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer class="bg-slate-950 border-t border-slate-900 py-8 text-center text-xs text-slate-500 font-mono">
-        <p>© 2026 Ramotech. All rights reserved. | Ahmedabad, Gujarat</p>
-    </footer>
+<!-- FOOTER -->
+<footer>
+    <div class="container footer-content">
 
-    <!-- SCRIPT INITIALIZATION -->
-    <script>
-        // Initialize Icons
-        lucide.createIcons();
+        <a href="#home" class="footer-logo">
+            <img src="20.png" alt="RAMOTECH Logo">
+        </a>
 
-        // Bind Dynamic CTAs
-        document.getElementById('nav-demo-btn').href = getWhatsAppUrl('demo');
-        document.getElementById('hero-demo-btn').href = getWhatsAppUrl('demo');
+        <p>© <span id="year"></span> RAMOTECH. All Rights Reserved.</p>
 
-        // Mobile drawer toggle
-        const toggle = document.getElementById('mobile-toggle');
-        const menu = document.getElementById('mobile-menu');
-        toggle.addEventListener('click', () => menu.classList.toggle('hidden'));
-    </script>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#programs">Programs</a>
+            <a href="#workshops">Workshops</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+    </div>
+</footer>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a
+    href="https://wa.me/919876543210"
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener"
+    aria-label="Chat on WhatsApp">
+    ☎
+</a>
+
+<!-- THREE.JS ROBOT -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+
+/* MOBILE MENU */
+
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+
+menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+    });
+});
+
+
+/* FAQ ACCORDION */
+
+document.querySelectorAll('.faq-question').forEach(button => {
+
+    button.addEventListener('click', () => {
+
+        const item = button.parentElement;
+        const wasActive = item.classList.contains('active');
+
+        document.querySelectorAll('.faq-item').forEach(faq => {
+            faq.classList.remove('active');
+            faq.querySelector('.faq-question span').textContent = '＋';
+        });
+
+        if (!wasActive) {
+            item.classList.add('active');
+            button.querySelector('span').textContent = '－';
+        }
+
+    });
+
+});
+
+
+/* SCROLL REVEAL */
+
+const revealObserver = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+        }
+
+    });
+
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(element => {
+    revealObserver.observe(element);
+});
+
+
+/* CONTACT FORM - WHATSAPP */
+
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const course = document.getElementById('course').value;
+    const message = document.getElementById('message').value.trim();
+
+    const whatsappNumber = '919876543210';
+
+    const text =
+        "Hello RAMOTECH,%0A%0A" +
+        "I would like to enquire about your programs.%0A%0A" +
+        "Name: " + encodeURIComponent(name) + "%0A" +
+        "Mobile: " + encodeURIComponent(phone) + "%0A" +
+        "Interested Program: " + encodeURIComponent(course) + "%0A" +
+        "Message: " + encodeURIComponent(message);
+
+    const whatsappURL = "https://wa.me/" + whatsappNumber + "?text=" + text;
+
+    window.open(whatsappURL, '_blank');
+
+});
+
+
+/* CURRENT YEAR */
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+
+/* THREE.JS ROBOT */
+
+(function() {
+
+    const canvas = document.getElementById('robot-canvas');
+
+    if (!window.THREE || !canvas) return;
+
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(
+        45,
+        canvas.clientWidth / canvas.clientHeight,
+        0.1,
+        100
+    );
+
+    camera.position.z = 6;
+
+    const renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        alpha: true,
+        antialias: true
+    });
+
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    function resizeRobot() {
+
+        const width = canvas.clientWidth;
+        const height = canvas.clientHeight;
+
+        if (!width || !height) return;
+
+        renderer.setSize(width, height, false);
+
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+
+    }
+
+    resizeRobot();
+
+    window.addEventListener('resize', resizeRobot);
+
+    /* ROBOT MATERIAL */
+
+    const robotMaterial = new THREE.MeshStandardMaterial({
+        color: 0x143b55,
+        metalness: 0.8,
+        roughness: 0.25
+    });
+
+    const cyanMaterial = new THREE.MeshStandardMaterial({
+        color: 0x00f5ff,
+        emissive: 0x00aabb,
+        emissiveIntensity: 1.8,
+        metalness: 0.4,
+        roughness: 0.2
+    });
+
+    const darkMaterial = new THREE.MeshStandardMaterial({
+        color: 0x071421,
+        metalness: 0.7,
+        roughness: 0.3
+    });
+
+    const robot = new THREE.Group();
+
+    /* HEAD */
+
+    const head = new THREE.Mesh(
+        new THREE.BoxGeometry(1.7, 1.35, 1.15),
+        robotMaterial
+    );
+
+    head.position.y = 1.1;
+    robot.add(head);
+
+    /* FACE PANEL */
+
+    const face = new THREE.Mesh(
+        new THREE.BoxGeometry(1.35, 0.75, 0.08),
+        darkMaterial
+    );
+
+    face.position.set(0, 1.1, 0.61);
+    robot.add(face);
+
+    /* EYES */
+
+    const eyeGeometry = new THREE.SphereGeometry(0.11, 24, 24);
+
+    const leftEye = new THREE.Mesh(eyeGeometry, cyanMaterial);
+    leftEye.position.set(-0.35, 1.15, 0.68);
+    robot.add(leftEye);
+
+    const rightEye = new THREE.Mesh(eyeGeometry, cyanMaterial);
+    rightEye.position.set(0.35, 1.15, 0.68);
+    robot.add(rightEye);
+
+    /* ANTENNA */
+
+    const antenna = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.035, 0.035, 0.4, 12),
+        cyanMaterial
+    );
+
+    antenna.position.set(0, 1.98, 0);
+    robot.add(antenna);
+
+    const antennaBall = new THREE.Mesh(
+        new THREE.SphereGeometry(0.1, 20, 20),
+        cyanMaterial
+    );
+
+    antennaBall.position.set(0, 2.2, 0);
+    robot.add(antennaBall);
+
+    /* BODY */
+
+    const body = new THREE.Mesh(
+        new THREE.BoxGeometry(1.45, 1.6, 0.9),
+        robotMaterial
+    );
+
+    body.position.y = -0.55;
+    robot.add(body);
+
+    const chestLight = new THREE.Mesh(
+        new THREE.BoxGeometry(0.45, 0.35, 0.08),
+        cyanMaterial
+    );
+
+    chestLight.position.set(0, -0.45, 0.49);
+    robot.add(chestLight);
+
+    /* ARMS */
+
+    const armGeometry = new THREE.BoxGeometry(0.35, 1.1, 0.4);
+
+    const leftArm = new THREE.Mesh(armGeometry, robotMaterial);
+    leftArm.position.set(-1, -0.45, 0);
+    robot.add(leftArm);
+
+    const rightArm = new THREE.Mesh(armGeometry, robotMaterial);
+    rightArm.position.set(1, -0.45, 0);
+    robot.add(rightArm);
+
+    /* LEGS */
+
+    const legGeometry = new THREE.BoxGeometry(0.45, 0.8, 0.5);
+
+    const leftLeg = new THREE.Mesh(legGeometry, robotMaterial);
+    leftLeg.position.set(-0.43, -1.75, 0);
+    robot.add(leftLeg);
+
+    const rightLeg = new THREE.Mesh(legGeometry, robotMaterial);
+    rightLeg.position.set(0.43, -1.75, 0);
+    robot.add(rightLeg);
+
+    scene.add(robot);
+
+    /* LIGHTING */
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
+    scene.add(ambientLight);
+
+    const mainLight = new THREE.PointLight(0x00f5ff, 2, 12);
+    mainLight.position.set(3, 3, 4);
+    scene.add(mainLight);
+
+    const purpleLight = new THREE.PointLight(0x9b5cff, 2, 12);
+    purpleLight.position.set(-3, 0, 3);
+    scene.add(purpleLight);
+
+    /* ANIMATION */
+
+    function animate() {
+
+        requestAnimationFrame(animate);
+
+        robot.rotation.y = Math.sin(Date.now() * 0.0005) * 0.22;
+        robot.position.y = Math.sin(Date.now() * 0.001) * 0.08;
+
+        leftArm.rotation.z = Math.sin(Date.now() * 0.001) * 0.08;
+        rightArm.rotation.z = -Math.sin(Date.now() * 0.001) * 0.08;
+
+        renderer.render(scene, camera);
+
+    }
+
+    animate();
+
+})();
+
+</script>
+
 </body>
 </html>
-
-Dekho and code line no bata ke hight light karo
