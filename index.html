@@ -922,7 +922,7 @@ footer {
 
             <div class="hero-buttons">
                 <a href="#programs" class="btn">Explore Programs →</a>
-                <a href="#contact" class="btn btn-outline">BOOK FREE DEMO</a>
+                <a href="https://wa.me/7041026034?text=Hello%20RAMOTECH%2C%20I%20would%20like%20to%20book%20a%20free%20demo.%20Please%20share%20the%20details." class="btn btn-outline" target="_blank" rel="noopener">BOOK FREE DEMO</a>
             </div>
 
             <div class="hero-stats">
@@ -971,7 +971,7 @@ footer {
                     Engineering and Mathematics through fun activities,
                     experiments and creative challenges.
                 </p>
-                <a href="#contact" class="card-btn">Enquire Now →</a>
+                <a href="#contact" class="card-btn">inquire Now →</a>
             </article>
 
             <article class="glass-card reveal">
@@ -982,7 +982,7 @@ footer {
                     innovation and practical problem-solving with
                     advanced hands-on activities.
                 </p>
-                <a href="#contact" class="card-btn">Enquire Now →</a>
+                <a href="#contact" class="card-btn">inquire Now →</a>
             </article>
 
             <article class="glass-card reveal">
@@ -992,7 +992,7 @@ footer {
                     Build your first robots, understand basic mechanisms
                     and discover how machines can sense, move and interact.
                 </p>
-                <a href="#contact" class="card-btn">Enquire Now →</a>
+                <a href="#contact" class="card-btn">inquire Now →</a>
             </article>
 
             <article class="glass-card reveal">
@@ -1003,7 +1003,7 @@ footer {
                     automation and intelligent robotic systems
                     through practical projects.
                 </p>
-                <a href="#contact" class="card-btn">Enquire Now →</a>
+                <a href="#contact" class="card-btn">inquire Now →</a>
             </article>
 
             <article class="glass-card reveal">
@@ -1014,7 +1014,7 @@ footer {
                     sensors and the Internet of Things by creating
                     smart connected devices.
                 </p>
-                <a href="#contact" class="card-btn">Enquire Now →</a>
+                <a href="#contact" class="card-btn">inquire Now →</a>
             </article>
 
             <article class="glass-card reveal">
@@ -1025,7 +1025,7 @@ footer {
                     Learn how to turn ideas into digital solutions
                     using coding and computational thinking.
                 </p>
-                <a href="#contact" class="card-btn">Enquire Now →</a>
+                <a href="#contact" class="card-btn">inquire Now →</a>
             </article>
 
             <article class="glass-card reveal">
@@ -1036,7 +1036,7 @@ footer {
                     CAD fundamentals and the process of turning
                     digital designs into real objects.
                 </p>
-                <a href="#contact" class="card-btn">Enquire Now →</a>
+                <a href="#contact" class="card-btn">inquire Now →</a>
             </article>
 
             <article class="glass-card reveal">
@@ -1047,7 +1047,7 @@ footer {
                     components, controls and applications of
                     unmanned aerial systems.
                 </p>
-                <a href="#contact" class="card-btn">Enquire Now →</a>
+                <a href="#contact" class="card-btn">inquire Now →</a>
             </article>
 
             <article class="glass-card reveal">
@@ -1058,7 +1058,7 @@ footer {
                     smart applications and the technology shaping
                     tomorrow's world.
                 </p>
-                <a href="#contact" class="card-btn">Enquire Now →</a>
+                <a href="#contact" class="card-btn">inquire Now →</a>
             </article>
 
         </div>
@@ -1334,7 +1334,7 @@ footer {
 
             <div class="faq-item">
                 <button class="faq-question">
-                    How can I enquire about a course?
+                    How can I inquire about a course?
                     <span>＋</span>
                 </button>
                 <div class="faq-answer">
@@ -1504,7 +1504,7 @@ footer {
                 </div>
 
                 <button type="submit" class="btn">
-                    Send Enquiry on WhatsApp →
+                    Send inquire on Mail →
                 </button>
 
             </form>
@@ -1610,7 +1610,7 @@ document.querySelectorAll('.reveal').forEach(element => {
 });
 
 
-/* CONTACT FORM - WHATSAPP */
+/* CONTACT FORM - EMAIL */
 
 document.getElementById('contactForm').addEventListener('submit', function(e) {
 
@@ -1621,19 +1621,21 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     const course = document.getElementById('course').value;
     const message = document.getElementById('message').value.trim();
 
-    const whatsappNumber = '7096003080';
+    const emailAddress = 'Inforam0tech1@gmail.com';
+    const subject = 'RAMOTECH Website Enquiry';
+    const body =
+        "Hello RAMOTECH,\n\n" +
+        "I would like to inquire about your programs.\n\n" +
+        "Name: " + name + "\n" +
+        "Mobile: " + phone + "\n" +
+        "Interested Program: " + course + "\n" +
+        "Message: " + message;
 
-    const text =
-        "Hello RAMOTECH,%0A%0A" +
-        "I would like to enquire about your programs.%0A%0A" +
-        "Name: " + encodeURIComponent(name) + "%0A" +
-        "Mobile: " + encodeURIComponent(phone) + "%0A" +
-        "Interested Program: " + encodeURIComponent(course) + "%0A" +
-        "Message: " + encodeURIComponent(message);
+    const mailtoURL = "mailto:" + emailAddress +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
 
-    const whatsappURL = "https://wa.me/" + whatsappNumber + "?text=" + text;
-
-    window.open(whatsappURL, '_blank');
+    window.location.href = mailtoURL;
 
 });
 
