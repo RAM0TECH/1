@@ -1610,35 +1610,48 @@ document.querySelectorAll('.reveal').forEach(element => {
 });
 
 
-/* CONTACT FORM - EMAIL */
+/* CONTACT FORM - OPEN GMAIL COMPOSE WITH PRE-FILLED ENQUIRY */
 
-document.getElementById('contactForm').addEventListener('submit', function(e) {
+const contactForm = document.getElementById('contactForm');
 
-    e.preventDefault();
+if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const course = document.getElementById('course').value;
-    const message = document.getElementById('message').value.trim();
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const course = document.getElementById('course').value;
+        const message = document.getElementById('message').value.trim();
 
-    const emailAddress = 'Inforam0tech1@gmail.com';
-    const subject = 'RAMOTECH Website Enquiry';
-    const body =
-        "Hello RAMOTECH,\n\n" +
-        "I would like to inquire about your programs.\n\n" +
-        "Name: " + name + "\n" +
-        "Mobile: " + phone + "\n" +
-        "Interested Program: " + course + "\n" +
-        "Message: " + message;
+        // Build the enquiry details for Gmail.
+        const recipient = 'Inforam0tech1@gmail.com';
+        const subject = 'RAMOTECH Website Enquiry';
+        const body = [
+            'Hello RAMOTECH,',
+            '',
+            'I would like to inquire about your programs.',
+            '',
+            'Name: ' + name,
+            'Mobile: ' + phone,
+            'Interested Program: ' + course,
+            'Message: ' + (message || 'Not provided')
+        ].join('\\n');
 
-    const mailtoURL = "mailto:" + emailAddress +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(body);
+        // Gmail web compose opens directly with recipient, subject and body filled.
+        const gmailURL = 'https://mail.google.com/mail/?view=cm&fs=1'
+            + '&to=' + encodeURIComponent(recipient)
+            + '&su=' + encodeURIComponent(subject)
+            + '&body=' + encodeURIComponent(body);
 
-    window.location.href = mailtoURL;
+        // Open synchronously from the submit click to reduce popup-blocker issues.
+        const gmailWindow = window.open(gmailURL, '_blank');
 
-});
-
+        if (!gmailWindow) {
+            // If pop-ups are blocked, navigate in the current tab instead.
+            window.location.assign(gmailURL);
+        }
+    });
+}
 
 /* CURRENT YEAR */
 
