@@ -857,6 +857,32 @@ footer {
         text-align: center;
     }
 }
+
+/* DIWALI CAMP SINGLE-PAGE VIEW */
+#diwali-camp-page{display:none;padding:70px 0 55px;position:relative;z-index:1;}
+#diwali-camp-page .camp-wrap{width:min(1120px,92%);margin:auto;}
+#diwali-camp-page .camp-hero{text-align:center;padding:25px 0 45px;}
+#diwali-camp-page .camp-tag{color:var(--cyan);letter-spacing:3px;text-transform:uppercase;font-size:12px;}
+#diwali-camp-page h1,#diwali-camp-page h2,#diwali-camp-page h3{font-family:Orbitron,sans-serif;}
+#diwali-camp-page h1{font-size:clamp(32px,5vw,58px);line-height:1.2;margin:16px 0;}
+#diwali-camp-page h1 span,#diwali-camp-page h2 span{color:var(--cyan);}
+#diwali-camp-page p{color:var(--muted);line-height:1.85;}
+#diwali-camp-page .camp-btn{display:inline-block;margin:12px 8px 0;padding:13px 24px;border-radius:7px;background:linear-gradient(110deg,var(--cyan),#3988ff);color:#03101c;font-weight:700;text-decoration:none;}
+#diwali-camp-page .camp-btn.outline{background:transparent;border:1px solid var(--cyan);color:var(--cyan);}
+#diwali-camp-page .camp-section{padding:38px 0;}
+#diwali-camp-page .camp-heading{text-align:center;margin-bottom:28px;}
+#diwali-camp-page .camp-heading h2{font-size:clamp(25px,4vw,38px);margin:12px 0;}
+#diwali-camp-page .camp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
+#diwali-camp-page .camp-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;backdrop-filter:blur(12px);}
+#diwali-camp-page .camp-card h3{color:var(--cyan);font-size:16px;margin-bottom:12px;}
+#diwali-camp-page .camp-price{font:700 28px Orbitron,sans-serif;margin:14px 0;color:var(--white);}
+#diwali-camp-page .camp-features{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;}
+#diwali-camp-page .camp-feature{text-align:center;padding:20px 12px;background:var(--card);border:1px solid var(--border);border-radius:12px;}
+#diwali-camp-page .camp-cta{text-align:center;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:40px 20px;}
+#diwali-camp-page .camp-pill{display:inline-block;border:1px solid var(--border);background:rgba(0,245,255,.07);color:var(--cyan);border-radius:25px;padding:7px 13px;font-size:12px;margin:5px;}
+@media(max-width:800px){#diwali-camp-page .camp-grid{grid-template-columns:1fr 1fr;}#diwali-camp-page .camp-features{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){#diwali-camp-page .camp-grid{grid-template-columns:1fr;}#diwali-camp-page .camp-hero{padding-top:10px;}}
+
 </style>
 </head>
 
@@ -884,7 +910,7 @@ footer {
 
         <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
-              <li><a href="#programs">Diwali Camp</a></li>
+              <li><a href="#diwali-camp">Diwali Camp</a></li>
             <li><a href="#programs">Programs</a></li>
             <li><a href="#workshops">Workshops</a></li>
             <li><a href="#about">About</a></li>
@@ -1525,7 +1551,7 @@ footer {
 
         <div class="footer-links">
             <a href="#home">Home</a>
-            <a href="#home">Diwali Camp</a>
+            <a href="#diwali-camp">Diwali Camp</a>
             <a href="#programs">Programs</a>
             <a href="#workshops">Workshops</a>
             <a href="#about">About</a>
@@ -1534,6 +1560,35 @@ footer {
 
     </div>
 </footer>
+
+
+<!-- DIWALI CAMP PAGE CONTENT (SAME HTML FILE) -->
+<div id="diwali-camp-page">
+ <div class="camp-wrap">
+  <div class="camp-hero">
+   <span class="camp-tag">RAMOTECH Academy Presents</span>
+   <h1>DIWALI CAMP <span>2026</span><br>From Ideas to Creations</h1>
+   <p>This Diwali, let creativity shine! Join RAMOTECH Robotics Camp: a 7-day hands-on learning experience where students explore coding, robotics and programming through making and practical activities.</p>
+   <div style="margin:18px 0"><span class="camp-pill">7 Days of Making</span><span class="camp-pill">Hands-on Robotics</span><span class="camp-pill">Coding & AI-ML</span><span class="camp-pill">Expert Mentors</span></div>
+   <a class="camp-btn" href="https://docs.google.com/forms/d/e/1FAIpQLScbtv1hMQqaW6VZp7kcXQnB06sEFUsgq_y1HueR3N0jTK2WtQ/viewform" target="_blank" rel="noopener">REGISTER NOW →</a>
+   <a class="camp-btn outline" href="#home" data-home-view>← Back to Home</a>
+  </div>
+  <section class="camp-section">
+   <div class="camp-heading"><span class="camp-tag">Camp Highlights</span><h2>Learn. Build. <span>Celebrate.</span></h2><p>Explore practical learning, personal guidance, expert mentoring and project-based robotics activities.</p></div>
+   <div class="camp-features"><div class="camp-feature">🤖<br>Hands-on Robotics</div><div class="camp-feature">⚽<br>Robo-Soccer</div><div class="camp-feature">🏅<br>Certificate</div><div class="camp-feature">🛠️<br>Projects</div></div>
+  </section>
+  <section class="camp-section" id="camp-tracks">
+   <div class="camp-heading"><span class="camp-tag">Choose Your Level</span><h2>Learning <span>Tracks & Fees</span></h2><p>Three learning tracks featured in the RAMOTECH Diwali Camp 2026 brochure.</p></div>
+   <div class="camp-grid">
+    <article class="camp-card"><h3>Beginner — PictoBlox Coding</h3><p>Basic Coding & Simple Machines</p><div class="camp-price">₹499</div><a class="camp-btn outline" href="https://docs.google.com/forms/d/e/1FAIpQLScbtv1hMQqaW6VZp7kcXQnB06sEFUsgq_y1HueR3N0jTK2WtQ/viewform" target="_blank" rel="noopener">Register for Beginner</a></article>
+    <article class="camp-card"><h3>Intermediate — Arduino and ESP32 Programming</h3><p>Embedded Systems & Sensors</p><div class="camp-price">₹999</div><a class="camp-btn outline" href="https://docs.google.com/forms/d/e/1FAIpQLScbtv1hMQqaW6VZp7kcXQnB06sEFUsgq_y1HueR3N0jTK2WtQ/viewform" target="_blank" rel="noopener">Register for Intermediate</a></article>
+    <article class="camp-card"><h3>Advanced — Autonomous Vehicle and AI-ML</h3><p>Advanced Robotics & AI-ML</p><div class="camp-price">₹1,499</div><a class="camp-btn outline" href="https://docs.google.com/forms/d/e/1FAIpQLScbtv1hMQqaW6VZp7kcXQnB06sEFUsgq_y1HueR3N0jTK2WtQ/viewform" target="_blank" rel="noopener">Register for Advanced</a></article>
+   </div>
+  </section>
+  <section class="camp-section"><div class="camp-heading"><span class="camp-tag">What You Experience</span><h2>Make Your Ideas <span>Real</span></h2></div><div class="camp-grid"><article class="camp-card"><h3>Learn Coding</h3><p>Build coding fundamentals and explore programming through interactive activities.</p></article><article class="camp-card"><h3>Build Robotics</h3><p>Work with robotics concepts, embedded systems, sensors and hands-on projects.</p></article><article class="camp-card"><h3>Explore AI-ML</h3><p>Discover advanced robotics and AI-ML concepts through the advanced learning track.</p></article></div></section>
+  <section class="camp-section" id="camp-registration"><div class="camp-cta"><span class="camp-tag">This Diwali, Let Creativity Shine!</span><h2 style="margin:14px 0">Ready to <span>Build the Future?</span></h2><p>Register for RAMOTECH Diwali Camp 2026. For queries, contact RAMOTECH Academy.</p><a class="camp-btn" href="https://docs.google.com/forms/d/e/1FAIpQLScbtv1hMQqaW6VZp7kcXQnB06sEFUsgq_y1HueR3N0jTK2WtQ/viewform" target="_blank" rel="noopener">Google Registration Form →</a><p style="margin-top:20px">Email: <a style="color:var(--cyan)" href="mailto:inforam0tech1@gmail.com">inforam0tech1@gmail.com</a><br>Website: <a style="color:var(--cyan)" href="https://ram0tech.github.io/1/" target="_blank" rel="noopener">https://ram0tech.github.io/1/</a></p></div></section>
+ </div>
+</div>
 
 <!-- WHATSAPP FLOATING BUTTON -->
 <a
@@ -1871,6 +1926,62 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 })();
 
+</script>
+
+
+<!-- ADDITIVE: DIWALI FIREWORKS BACKGROUND -->
+<canvas id="diwali-fireworks" aria-hidden="true" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1;opacity:.65"></canvas>
+<script>
+(function(){
+ const canvas=document.getElementById('diwali-fireworks');
+ if(!canvas) return;
+ const ctx=canvas.getContext('2d');
+ let w,h,particles=[];
+ function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;}
+ resize();addEventListener('resize',resize);
+ function burst(){
+   const x=Math.random()*w, y=Math.random()*h*.62;
+   const hue=Math.random()*360;
+   for(let i=0;i<42;i++){
+     const a=Math.PI*2*i/42, speed=1+Math.random()*3.2;
+     particles.push({x,y,vx:Math.cos(a)*speed,vy:Math.sin(a)*speed,
+       life:45+Math.random()*30,max:75,hue, r:1+Math.random()*1.7});
+   }
+ }
+ let frame=0;
+ function draw(){
+   ctx.clearRect(0,0,w,h);
+   particles=particles.filter(p=>p.life>0);
+   particles.forEach(p=>{
+     p.x+=p.vx;p.y+=p.vy;p.vy+=.025;p.vx*=.99;p.life--;
+     ctx.globalAlpha=Math.max(0,p.life/p.max);
+     ctx.fillStyle='hsl('+p.hue+',100%,65%)';
+     ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+   });
+   ctx.globalAlpha=1;
+   if(frame++%48===0) burst();
+   requestAnimationFrame(draw);
+ }
+ draw();
+})();
+</script>
+
+
+<script>
+/* SINGLE-FILE PAGE SWITCH: Home <-> Diwali Camp */
+(function(){
+ const campPage=document.getElementById('diwali-camp-page');
+ const homeElements=[...document.querySelectorAll('body > section, body > footer')];
+ const homeAnchor=document.querySelector('header .logo');
+ const navCamp=[...document.querySelectorAll('a[href="#diwali-camp"]')];
+ const navHome=[...document.querySelectorAll('a[href="#home"], header .logo')];
+ const whatsapp=document.querySelector('.whatsapp-float');
+ function showCamp(e){if(e)e.preventDefault();homeElements.forEach(el=>el.style.display='none');if(whatsapp)whatsapp.style.display='none';campPage.style.display='block';window.scrollTo({top:0,behavior:'smooth'});}
+ function showHome(e){if(e)e.preventDefault();campPage.style.display='none';homeElements.forEach(el=>el.style.display='');if(whatsapp)whatsapp.style.display='';window.scrollTo({top:0,behavior:'smooth'});}
+ navCamp.forEach(a=>a.addEventListener('click',showCamp));
+ navHome.forEach(a=>a.addEventListener('click',showHome));
+ campPage.querySelectorAll('[data-home-view]').forEach(a=>a.addEventListener('click',showHome));
+})();
 </script>
 
 </body>
